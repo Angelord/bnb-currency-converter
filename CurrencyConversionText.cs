@@ -46,7 +46,7 @@ namespace CurrencyConverter {
                 this._originalText = originalText;
                 _text = text;
                 _value = float.Parse(text.Substring(0, text.IndexOf(" ", StringComparison.Ordinal)));
-                _currency = text.Substring(text.IndexOf(" ", StringComparison.Ordinal));
+                _currency = text.Substring(text.IndexOf(" ", StringComparison.Ordinal) + 1);
             }
 
             public void Set(float value, string currency) {

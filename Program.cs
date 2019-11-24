@@ -11,6 +11,7 @@ namespace CurrencyConverter {
         public static void Main(string[] args) {
             
             BnbCurrencyData bnbData = new BnbCurrencyData();
+            bnbData.Get();
 
             string inputText = File.ReadAllText(INPUT_FILE_NAME);
             CurrencyConversionText conversionText = new CurrencyConversionText(inputText, bnbData.Currencies);
@@ -18,10 +19,6 @@ namespace CurrencyConverter {
             string outputCurrency = ReadCurrencyParameter(bnbData.Currencies);
             
             foreach (CurrencyConversionText.MonetaryValue monetaryValue in conversionText) {
-                if (monetaryValue.Currency == outputCurrency) {
-                    continue;;
-                }
-
                 float newValue = bnbData.Convert(monetaryValue.Currency, outputCurrency, monetaryValue.Value);
                 
                 monetaryValue.Set(newValue, outputCurrency);
