@@ -19,7 +19,7 @@ namespace CurrencyConverter {
             string outputCurrency = ReadCurrencyParameter(bnbData.Currencies);
             
             foreach (CurrencyConversionText.MonetaryValue monetaryValue in conversionText) {
-                float newValue = bnbData.Convert(monetaryValue.Currency, outputCurrency, monetaryValue.Value);
+                decimal newValue = bnbData.Convert(monetaryValue.Currency, outputCurrency, monetaryValue.Value);
                 
                 monetaryValue.Set(newValue, outputCurrency);
             }

@@ -35,25 +35,25 @@ namespace CurrencyConverter {
 
             private CurrencyConversionText _originalText;
             private string _text;
-            private float _value;
+            private decimal _value;
             private string _currency;
             
             public string Text { get { return _text; } }
-            public float Value { get { return _value; } }
+            public decimal Value { get { return _value; } }
             public string Currency { get { return _currency; } }
 
             public MonetaryValue(CurrencyConversionText originalText, string text) {
                 this._originalText = originalText;
                 _text = text;
-                _value = float.Parse(text.Substring(0, text.IndexOf(" ", StringComparison.Ordinal)));
+                _value = decimal.Parse(text.Substring(0, text.IndexOf(" ", StringComparison.Ordinal)));
                 _currency = text.Substring(text.IndexOf(" ", StringComparison.Ordinal) + 1);
             }
 
-            public void Set(float value, string currency) {
+            public void Set(decimal value, string currency) {
                 _value = value;
                 _currency = currency;
                 
-                string newText = $"{value} {currency}";
+                string newText = $"{_value:0.###} {currency}";
                 _originalText._text = _originalText._text.Replace(_text, newText);
                 _text = newText;
             }

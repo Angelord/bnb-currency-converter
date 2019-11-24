@@ -10,19 +10,19 @@ namespace CurrencyConverter {
     
     internal class CurrencyInformation {
 
-        private readonly float _toLevMultiplier;    // Multiplier for converting to levs
-        private readonly float _fromLevMultiplier;  // Multiplier for converting from levs
+        private readonly decimal _toLevMultiplier;    // Multiplier for converting to levs
+        private readonly decimal _fromLevMultiplier;  // Multiplier for converting from levs
 
-        public CurrencyInformation(float unitsGold, float toLev, float fromLevLev) {
+        public CurrencyInformation(decimal unitsGold, decimal toLev, decimal fromLevLev) {
             _toLevMultiplier = toLev / unitsGold;
             _fromLevMultiplier = fromLevLev;
         }
         
         /// <summary> Converts the value in the currency to its value in levs </summary>
-        public float ToLev(float valueCurrency) { return valueCurrency * _toLevMultiplier; }
+        public decimal ToLev(decimal valueCurrency) { return valueCurrency * _toLevMultiplier; }
         
         /// <summary> Converts from lev to the currency </summary>
-        public float ToCurrency(float valueLevs) { return valueLevs * _fromLevMultiplier; }
+        public decimal ToCurrency(decimal valueLevs) { return valueLevs * _fromLevMultiplier; }
     }
 
     internal class BnbCurrencyData {
@@ -35,11 +35,11 @@ namespace CurrencyConverter {
 
         public string[] Currencies => _currencies;
 
-        public float Convert(string from, string to, float value) {
+        public decimal Convert(string from, string to, decimal value) {
             CurrencyInformation sourceCurrency = _rates[from];
             CurrencyInformation targetCurrency = _rates[to];
 
-            float valueInLev = sourceCurrency.ToLev(value);
+            decimal valueInLev = sourceCurrency.ToLev(value);
             return targetCurrency.ToCurrency(valueInLev);
         }
 
@@ -56,15 +56,15 @@ namespace CurrencyConverter {
 
             foreach (HtmlNode row in rows) {
                 string currency = row.ChildNodes[3].InnerHtml;
-                float unitsGold = float.Parse(row.ChildNodes[5].InnerHtml);
-                float toLev = float.Parse(row.ChildNodes[7].InnerHtml);
-                float fromLev = float.Parse(row.ChildNodes[9].InnerHtml);
+                decimal unitsGold = decimal.Parse(row.ChildNodes[5].InnerHtml);
+                decimal toLev = decimal.Parse(row.ChildNodes[7].InnerHtml);
+                decimal fromLev = decimal.Parse(row.ChildNodes[9].InnerHtml);
                 
                 _rates.Add(currency, new CurrencyInformation(unitsGold, toLev, fromLev));
             }
             
             // Handle conversion to BGN, as it is not included in the table
-            _rates.Add(CURRENCY_BGN, new CurrencyInformation(1.0f, 1.0f, 1.0f));
+            _rates.Add(CURRENCY_BGN, new CurrencyInformation(1.0m, 1.0m, 1.0m));
 
             _currencies = _rates.Keys.ToArray();
         }
