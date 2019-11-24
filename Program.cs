@@ -13,6 +13,11 @@ namespace CurrencyConverter {
             BnbCurrencyData bnbData = new BnbCurrencyData();
             bnbData.Get();
 
+            if(!File.Exists(INPUT_FILE_NAME)) {
+                Console.WriteLine($"Failed to find '{INPUT_FILE_NAME}' file in the execution path. Aborting.");
+                return;
+            }
+            
             string inputText = File.ReadAllText(INPUT_FILE_NAME);
             CurrencyConversionText conversionText = new CurrencyConversionText(inputText, bnbData.Currencies);
 

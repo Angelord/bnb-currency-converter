@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51c3fe82-1381-409a-a17e-9b41e344b7ad" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CurrencyConverter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CurrencyConverter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BnbCurrencyData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BnbCurrencyData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CurrencyConversionText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CurrencyConversionText.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-    </list>
+    <list default="true" id="51c3fe82-1381-409a-a17e-9b41e344b7ad" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1574287376861</updated>
       <workItem from="1574287380856" duration="2376000" />
-      <workItem from="1574584410588" duration="8485000" />
+      <workItem from="1574584410588" duration="8544000" />
     </task>
     <servers />
   </component>
