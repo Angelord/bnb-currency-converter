@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 
 namespace CurrencyConverter {
     internal static class Program {
@@ -13,8 +14,8 @@ namespace CurrencyConverter {
 
             string inputText = File.ReadAllText(INPUT_FILE_NAME);
             CurrencyConversionText conversionText = new CurrencyConversionText(inputText, bnbData.Currencies);
-            
-            string outputCurrency = ReadCurrencyParameter("Specify the output currency : ");
+
+            string outputCurrency = ReadCurrencyParameter(bnbData.Currencies);
             
             foreach (CurrencyConversionText.MonetaryValue monetaryValue in conversionText) {
                 if (monetaryValue.Currency == outputCurrency) {
@@ -31,9 +32,18 @@ namespace CurrencyConverter {
             Console.WriteLine("Result has been saved successfully.");
         }
         
-        private static string ReadCurrencyParameter(string prompt) {
-            Console.Write(prompt);
-            return Console.ReadLine().Trim().ToUpper();
+        private static string ReadCurrencyParameter(string[] currencies) {
+            string joinedCurrencies = String.Join(", ", currencies);
+            Console.WriteLine($"Available Currencies : {joinedCurrencies}");
+            Console.WriteLine("Specify the output currency : ");
+            
+            string input = Console.ReadLine()?.Trim().ToUpper();
+            while (!currencies.Contains(input)) {
+                Console.WriteLine($"Invalid input! The valid currencies are : {joinedCurrencies}");
+                input = Console.ReadLine()?.Trim().ToUpper();
+            }
+
+            return input;
         }
     }
 }
