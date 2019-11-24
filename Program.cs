@@ -33,7 +33,7 @@ namespace CurrencyConverter {
             
             Console.WriteLine("Result has been saved successfully.");
         }
-        
+
         private static string ReadCurrencyParameter(string[] currencies) {
             string joinedCurrencies = String.Join(", ", currencies);
             Console.WriteLine($"Available Currencies : {joinedCurrencies}");
